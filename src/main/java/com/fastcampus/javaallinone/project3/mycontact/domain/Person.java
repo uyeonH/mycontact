@@ -2,6 +2,7 @@ package com.fastcampus.javaallinone.project3.mycontact.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,48 +12,29 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
+@Getter
+@Setter
 public class Person {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    @Getter
-    @Setter
     private String name;
 
-    @Getter
-    @Setter
     private String hobby;
 
-    @Getter
-    @Setter
     private String bloodType;
 
-    @Getter
-    @Setter
     private String address;
 
-    @Getter
-    @Setter
     private LocalDate birthday;
 
-    @Getter
-    @Setter
     private String job;
 
-    @Getter
-    @Setter
     private int age;
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "name=\'" + name + '\'' +
-                ", age=" + age +
-                "}";
-
-    }
-
+    @ToString.Exclude
+    private String phoneNumber;
 
 }

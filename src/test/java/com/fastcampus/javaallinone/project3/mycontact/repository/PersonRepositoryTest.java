@@ -31,6 +31,8 @@ class PersonRepositoryTest {
         assertThat(people.get(0).getName()).isEqualTo("yooyeon");
         assertThat(people.get(0).getAge()).isEqualTo(100);
         assertThat(people.get(0).getBloodType()).isEqualTo("A");
+
+        System.out.println(people);
     }
 
 
