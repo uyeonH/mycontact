@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,5 +36,13 @@ class PersonRepositoryTest {
         System.out.println(people);
     }
 
+    @Test
+    void hashCodeAndEquals(){
+        Person person=new Person("yeon",10);
+        Person person2=new Person("yeon",10);
+        System.out.println(person.equals(person2));
+        System.out.println(person.hashCode());
+        System.out.println(person2.hashCode());
+    }
 
 }
