@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -33,10 +34,40 @@ class PersonServiceTest {
         result.forEach(System.out::println); // List의 객체가 보기좋게 한 줄씩 노출된다.
     }
 
+    @Test
+    void cascadeTest() {
+
+        givenPeople();
+
+        List<Person> result = personRepository.findAll();
+        result.forEach(System.out::println);
+
+        Person person = result.get(3);
+        // person.getBlock().setStartDate(LocalDate.now());
+        // person.getBlock().setEndDate(LocalDate.now());
+
+        personRepository.save(person);
+        personRepository.findAll().forEach(System.out::println);
+
+        // personRepository.delete(person);
+        //   personRepository.findAll().forEach(System.out::println);
+        //  blockRepository.findAll().forEach(System.out::println);
+
+        person.setBlock(null);
+        personRepository.save(person);
+        personRepository.findAll().forEach(System.out::println);
+        blockRepository.findAll().forEach(System.out::println);
+    }
+
+    @Test
+    void getPerson(){
+        givenPeople();
+        Person person=personService.getPerson(3L);
+        System.out.println(person);
+    }
     private void givenPeople() {
         givenPerson("yooyeon", 10, "A");
         givenPerson("martin", 11, "B");
-        givenPerson("david", 9, "A");
         givenPerson("amy", 8, "AB");
         givenBlockPerson("martin", 10, "O");
     }

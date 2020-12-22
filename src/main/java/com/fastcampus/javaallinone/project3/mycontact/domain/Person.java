@@ -38,7 +38,8 @@ public class Person {
     @ToString.Exclude
     private String phoneNumber;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade =CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
     private Block block;
 
 
