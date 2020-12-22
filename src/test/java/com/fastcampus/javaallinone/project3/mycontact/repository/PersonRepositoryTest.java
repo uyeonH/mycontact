@@ -39,8 +39,8 @@ class PersonRepositoryTest {
 
     @Test
     void hashCodeAndEquals() {
-        Person person = new Person("yeon", 10,"A");
-        Person person2 = new Person("yeon", 10,"B");
+        Person person = new Person();
+        Person person2 = new Person();
         System.out.println(person.equals(person2));
         System.out.println(person.hashCode());
         System.out.println(person2.hashCode());
@@ -50,7 +50,7 @@ class PersonRepositoryTest {
         map.put(person,person.getAge());
 
         System.out.println(map);
-        System.out.println(map.get(person2));
+        System.out.println( map.get(person2));
 
     }
 

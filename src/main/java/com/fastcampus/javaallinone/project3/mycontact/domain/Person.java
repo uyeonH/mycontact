@@ -2,9 +2,7 @@ package com.fastcampus.javaallinone.project3.mycontact.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -13,6 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@RequiredArgsConstructor
 public class Person {
 
     @Id
@@ -21,13 +20,14 @@ public class Person {
 
     @NonNull
     private String name;
+
     @NonNull
     private int age;
 
-    private String hobby;
-
     @NonNull
     private String bloodType;
+
+    private String hobby;
 
     private String address;
 
@@ -35,10 +35,11 @@ public class Person {
 
     private String job;
 
-
     @ToString.Exclude
     private String phoneNumber;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Block block;
 
 
 }
