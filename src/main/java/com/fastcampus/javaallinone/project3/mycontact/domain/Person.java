@@ -4,6 +4,7 @@ import com.fastcampus.javaallinone.project3.mycontact.domain.dto.Birthday;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -32,6 +33,7 @@ public class Person {
 
     private String address;
 
+    @Valid
     @Embedded
     private Birthday birthday;
 

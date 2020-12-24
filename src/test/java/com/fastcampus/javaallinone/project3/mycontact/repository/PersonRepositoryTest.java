@@ -77,7 +77,7 @@ class PersonRepositoryTest {
         givenPerson("lily", 30, "O", LocalDate.of(2030, 5, 10));
         givenPerson("david", 20, "A", LocalDate.of(2040, 5, 11));
 
-        List<Person> result = personRepository.findByMonthOfBirthday(5, 8);
+        List<Person> result = personRepository.findByMonthOfBirthday(5);
         result.forEach(System.out::println);
 
 
@@ -85,7 +85,7 @@ class PersonRepositoryTest {
 
     private void givenPerson(String name, int age, String bloodType, LocalDate birthday) {
         Person person = new Person(name, age, bloodType);
-        person.setBirthday(new Birthday(birthday.getYear(), birthday.getMonthValue(), birthday.getDayOfMonth()));
+        person.setBirthday(new Birthday(birthday));
         personRepository.save(person);
     }
 
