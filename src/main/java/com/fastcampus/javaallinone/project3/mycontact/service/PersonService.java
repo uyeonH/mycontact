@@ -24,17 +24,34 @@ public class PersonService {
 
         List<Person> people = personRepository.findAll();
 
-        return people.stream().filter(person -> person.getBlock() == null).collect(Collectors.toList());
+        // return people.stream().filter(person -> person.getBlock() == null).collect(Collectors.toList());
+        //return personRepository.findByBlockIsNotNull(); // 차단 된 사람
+        return personRepository.findByBlockIsNull(); // 차단 안 된 사람
+
 
     }
+    public List<Person> getPeopleBloodType() {
 
-    @Transactional(readOnly=true)
-    public Person getPerson(Long id){
+        List<Person> people = personRepository.findAll();
+
+        return personRepository.findByBloodType("A");
+
+
+    }
+    @Transactional(readOnly = true)
+    public Person getPerson(Long id) {
         Person person = personRepository.findById(id).get();
         //System.out.println("Person: "+person);
-        log.info("person: {}",person);
+        log.info("person: {}", person);
         return person;
     }
 
 
+    public List<Person> getPeopleByName(String name) {
+
+        //   List<Person> people = personRepository.findAll();
+        //   return people.stream().filter(person->person.getName().equals(name)).collect(Collectors.toList());
+        return personRepository.findByName(name);
+
+    }
 }

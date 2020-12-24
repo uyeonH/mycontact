@@ -33,6 +33,22 @@ class PersonServiceTest {
 
         result.forEach(System.out::println); // List의 객체가 보기좋게 한 줄씩 노출된다.
     }
+    @Test
+    void getPeopleBloodType() {
+
+        givenPeople();
+        givenBlocks();
+
+        List<Person> result = personService.getPeopleBloodType();
+
+        result.forEach(System.out::println); // List의 객체가 보기좋게 한 줄씩 노출된다.
+    }
+    @Test
+    void getPeopleByName() {
+        givenPeople();
+        List<Person> result = personService.getPeopleByName("yooyeon");
+        result.forEach(System.out::println);
+    }
 
     @Test
     void cascadeTest() {
@@ -60,11 +76,12 @@ class PersonServiceTest {
     }
 
     @Test
-    void getPerson(){
+    void getPerson() {
         givenPeople();
-        Person person=personService.getPerson(3L);
+        Person person = personService.getPerson(3L);
         System.out.println(person);
     }
+
     private void givenPeople() {
         givenPerson("yooyeon", 10, "A");
         givenPerson("martin", 11, "B");
