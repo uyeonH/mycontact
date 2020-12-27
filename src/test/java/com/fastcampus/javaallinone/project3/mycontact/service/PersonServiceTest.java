@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDate;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -26,12 +27,12 @@ class PersonServiceTest {
     @Test
     void getPeopleExcludeBlocks() {
 
-        givenPeople();
-        givenBlocks();
 
         List<Person> result = personService.getPeopleExcludeBlocks();
+        assertThat(result.size()).isEqualTo(2);
+        assertThat(result.get(0).getName()).isEqualTo("david");
+        assertThat(result.get(1).getName()).isEqualTo("benny");
 
-        result.forEach(System.out::println); // List의 객체가 보기좋게 한 줄씩 노출된다.
     }
     @Test
     void getPeopleBloodType() {
@@ -43,12 +44,7 @@ class PersonServiceTest {
 
         result.forEach(System.out::println); // List의 객체가 보기좋게 한 줄씩 노출된다.
     }
-    @Test
-    void getPeopleByName() {
-        givenPeople();
-        List<Person> result = personService.getPeopleByName("yooyeon");
-        result.forEach(System.out::println);
-    }
+
 
     @Test
     void cascadeTest() {
@@ -77,9 +73,9 @@ class PersonServiceTest {
 
     @Test
     void getPerson() {
-        givenPeople();
-        Person person = personService.getPerson(3L);
-        System.out.println(person);
+        Person person = personService.getPerson(1L);
+        assertThat(person.getName()).isEqualTo("dennis");
+
     }
 
     private void givenPeople() {

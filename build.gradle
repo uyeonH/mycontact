@@ -23,6 +23,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation('org.springframework.boot:spring-boot-starter-validation')
     implementation 'com.h2database:h2'
+    implementation 'junit:junit:4.12'
+    implementation 'junit:junit:4.12'
+    implementation group: 'org.javassist', name: 'javassist', version: '3.15.0-GA'
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
